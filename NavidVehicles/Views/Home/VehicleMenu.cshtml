@@ -1,0 +1,132 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VehicleMenu</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body ng-app="myModule">
+
+    <div class="container" ng-controller="vehicleController">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2> {{ headingTitle }} </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 vehicleClass">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="vehicle in GetAllVehicles" ng-click="ShowVehicleDetail(vehicle)">
+                            <td>{{vehicle.Id}}</td>
+                            <td>{{vehicle.Make}}</td>
+                            <td>{{vehicle.Model}}</td>
+                            <td>{{vehicle.Year}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4 vehicleClass">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>Vehicle Details:</legend>
+                        <div class="form-group">
+                            <label for="Id" class="col-lg-2 control-label">Vehicle ID:</label>
+                            <div class="col-lg-10">
+                                <input type="text" value="{{vehicleDetails.Id}}" class="form-control" id="vehicleId" placeholder="#" disabled="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Id" class="col-lg-2 control-label">Model:</label>
+                            <div class="col-lg-10">
+                                <input type="text" value="{{vehicleDetails.Model}}" class="form-control" id="vehicleModel" placeholder="#">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Id" class="col-lg-2 control-label">Make:</label>
+                            <div class="col-lg-10">
+                                <input type="text" value="{{vehicleDetails.Make}}" class="form-control" id="vehicleMake" placeholder="#">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Id" class="col-lg-2 control-label">Year:</label>
+                            <div class="col-lg-10">
+                                <input type="text" value="{{vehicleDetails.Year}}" class="form-control" id="vehicleYear" placeholder="#">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="button" ng-click="UpdateVehicle(vehicleDetails)" class="btn btn-primary">Update</button>
+                                <button type="button" ng-click="DeleteVehicle(vehicleDetails)" class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <span>{{status}}</span>
+                </form>
+            </div>
+
+            <div class="col-md-4 vehicleClass">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>Create New Vehicle:</legend>
+
+                        <div class="form-group">
+                            <label for="Id" class="col-lg-2 control-label">Model:</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="vehicleModel" placeholder="#">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Id" class="col-lg-2 control-label">Make:</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="vehicleMake" placeholder="#">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Id" class="col-lg-2 control-label">Year:</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="vehicleYear" placeholder="#">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="button" ng-click="CreateVehicle(vehicleDetails)" class="btn btn-warning">Create</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <span>{{status}}</span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/mainapp.js"></script>
+</body>
+</html>
