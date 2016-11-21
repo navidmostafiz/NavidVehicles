@@ -26,6 +26,7 @@ namespace NavidVehicles
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                     "~/Scripts/angular.js",
+                    "~/Scripts/angular-messages.js",
                      "~/Scripts/mainapp.js"));
         }
     }

@@ -19,3 +19,8 @@ textarea {
 .vehicleClass {
     border-bottom-color: aliceblue;
 }
+
+.banner {
+
+border: 2px solid #DDD;
+}

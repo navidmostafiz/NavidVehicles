@@ -40,7 +40,18 @@ namespace NavidVehicles.Models.DAO
         /// <returns></returns>
         public List<Vehicle> GetAllVehicles()
         {
-            return GetContext().Vehicles.ToList();
+            List<Vehicle> vehicleList;
+
+            try
+            {
+                vehicleList = GetContext().Vehicles.ToList();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+
+            return vehicleList;
         }
 
         /// <summary>
@@ -50,8 +61,15 @@ namespace NavidVehicles.Models.DAO
         /// <returns></returns>
         public bool DeleteVehicle(Vehicle vehicle)
         {
-            GetContext().Vehicles.Remove(vehicle);
-            GetContext().SaveChangesAsync();
+            try
+            {
+                GetContext().Vehicles.Remove(vehicle);
+                GetContext().SaveChangesAsync();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
 
             return true;
         }
@@ -63,10 +81,23 @@ namespace NavidVehicles.Models.DAO
         /// <returns></returns>
         public bool UpdateVehicle(Vehicle vehicle)
         {
-            if (GetVehicleById(vehicle.Id) != null)
+            Vehicle vehicleToUpdate = GetVehicleById(vehicle.Id);
+
+            if (vehicleToUpdate != null)
             {
-                GetContext().Entry(vehicle).State = EntityState.Modified;
-                GetContext().SaveChangesAsync();
+                vehicleToUpdate.Year = vehicle.Year;
+                vehicleToUpdate.Make = vehicle.Make;
+                vehicleToUpdate.Model = vehicle.Model;
+
+                try
+                {
+                    GetContext().Entry(vehicleToUpdate).State = EntityState.Modified;
+                    GetContext().SaveChangesAsync();
+                }
+                catch (System.Exception)
+                {
+                    throw;
+                }
 
                 return true;
             }
@@ -77,14 +108,21 @@ namespace NavidVehicles.Models.DAO
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="vehicle"></param>
+        /// <param name="createVehicle"></param>
         /// <returns></returns>
-        public Vehicle CreateVehicle(Vehicle vehicle)
+        public Vehicle CreateVehicle(Vehicle createVehicle)
         {
-            GetContext().Vehicles.Add(vehicle);
-            GetContext().SaveChangesAsync();
+            try
+            {
+                GetContext().Vehicles.Add(createVehicle);
+                GetContext().SaveChangesAsync();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
 
-            return vehicle;
+            return createVehicle;
         }
 
         /// <summary>
@@ -94,7 +132,14 @@ namespace NavidVehicles.Models.DAO
         /// <returns></returns>
         public Vehicle GetVehicleById(int id)
         {
-            return GetContext().Vehicles.Find(id);
+            try
+            {
+                return GetContext().Vehicles.Find(id);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
     }
 }

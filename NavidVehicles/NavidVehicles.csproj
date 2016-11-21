@@ -253,6 +253,7 @@
       <DependentUpon>201611161859061_Toyota.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BO\CreateVehicleDTO.cs" />
     <Compile Include="Models\BO\Vehicle.cs" />
     <Compile Include="Models\DAO\DAOFactory.cs" />
     <Compile Include="Models\DAO\IDAOFactory.cs" />
@@ -295,6 +296,7 @@
     <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular-sanitize.min.js" />
     <Content Include="Scripts\angular-scenario.js" />
+    <Content Include="Scripts\angular-spinner.js" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
@@ -1080,6 +1082,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\navidvehicle2 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\navidvehicle2 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\navvehicles - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\navvehicles - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\navvehicles - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\navvehicles - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1092,7 +1100,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Scripts\spin.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1101,7 +1112,9 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />

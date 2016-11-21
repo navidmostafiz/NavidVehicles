@@ -489,7 +489,7 @@
         </member>
         <member name="T:NavidVehicles.Controllers.VehiclesController">
             <summary>
-            
+            teh controller for Vehicle
             </summary>
         </member>
         <member name="M:NavidVehicles.Controllers.VehiclesController.#ctor">
@@ -514,11 +514,11 @@
             </summary>
             <param name="id">The ID of the data.</param>
         </member>
-        <member name="M:NavidVehicles.Controllers.VehiclesController.CreateVehicle(NavidVehicles.Models.BO.Vehicle)">
+        <member name="M:NavidVehicles.Controllers.VehiclesController.CreateVehicle(NavidVehicles.Models.BO.CreateVehicleDTO)">
             <summary>
             Looks up some vehicles by ID.
             </summary>
-            <param name="vehicle">The vehicle.</param>
+            <param name="createVehicleDTO">The vehicle.</param>
         </member>
         <member name="M:NavidVehicles.Controllers.VehiclesController.UpdateVehicle(NavidVehicles.Models.BO.Vehicle)">
             <summary>
@@ -531,6 +531,26 @@
             Delete vehicles
             </summary>
             <param name="id">The ID of the data.</param>
+        </member>
+        <member name="P:NavidVehicles.Models.BO.Vehicle.Id">
+            <summary>
+            Vehicle Id.
+            </summary>
+        </member>
+        <member name="P:NavidVehicles.Models.BO.Vehicle.Year">
+            <summary>
+            Vehicle year of manufacture.
+            </summary>
+        </member>
+        <member name="P:NavidVehicles.Models.BO.Vehicle.Make">
+            <summary>
+            Vehicle manufacturer.
+            </summary>
+        </member>
+        <member name="P:NavidVehicles.Models.BO.Vehicle.Model">
+            <summary>
+            Vehicle model.
+            </summary>
         </member>
         <member name="T:NavidVehicles.Models.DAO.DAOFactory">
             <summary>
@@ -594,7 +614,7 @@
             <summary>
             
             </summary>
-            <param name="vehicle"></param>
+            <param name="createVehicle"></param>
             <returns></returns>
         </member>
         <member name="M:NavidVehicles.Models.DAO.VehicleDAO.GetVehicleById(System.Int32)">

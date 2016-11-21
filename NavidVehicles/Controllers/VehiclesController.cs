@@ -1,14 +1,14 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using NavidVehicles.Models.BO;
 using NavidVehicles.Models.DAO;
 using System.Collections.Generic;
 using System.Web.Http.Description;
-using System.Web.Http.Cors;
 
 namespace NavidVehicles.Controllers
 {
     /// <summary>
-    /// 
+    /// teh controller for Vehicle
     /// </summary>
     [RoutePrefix("api/vehicles")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -43,14 +43,14 @@ namespace NavidVehicles.Controllers
         [HttpGet]
         public IHttpActionResult GetAllVehicles()
         {
-            List<Vehicle> vehicle = _DAOFactory.GetVehicleDAO().GetAllVehicles();
+            List<Vehicle> vehicleList = _DAOFactory.GetVehicleDAO().GetAllVehicles();
 
-            if (vehicle.Count == 0)
+            if (vehicleList.Count == 0)
             {
                 return NotFound();
             }
 
-            return Ok(vehicle);
+            return Ok(vehicleList);
         }
 
         /// <summary>
@@ -76,19 +76,26 @@ namespace NavidVehicles.Controllers
         /// <summary>
         /// Looks up some vehicles by ID.
         /// </summary>
-        /// <param name="vehicle">The vehicle.</param>
+        /// <param name="createVehicleDTO">The vehicle.</param>
         // POST: api/vehicles/vehicles
         [Route("vehicles")]
         [ResponseType(typeof(Vehicle))]
         [HttpPost]
-        public IHttpActionResult CreateVehicle([FromBody]Vehicle vehicle)
+        public IHttpActionResult CreateVehicle([FromBody]CreateVehicleDTO createVehicleDTO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            Vehicle createdVehicle = _DAOFactory.GetVehicleDAO().CreateVehicle(vehicle);
+            Vehicle createVehicle = new Vehicle()
+            {
+                Year = createVehicleDTO.Year,
+                Make = createVehicleDTO.Make,
+                Model = createVehicleDTO.Model
+            };
+
+            Vehicle createdVehicle = _DAOFactory.GetVehicleDAO().CreateVehicle(createVehicle);
 
             return Ok(createdVehicle);
         }
