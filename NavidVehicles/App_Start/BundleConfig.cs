@@ -28,6 +28,10 @@ namespace NavidVehicles
                     "~/Scripts/angular.js",
                     "~/Scripts/angular-messages.js",
                      "~/Scripts/mainapp.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/spin").Include(
+                    "~/Scripts/spin.js",
+                    "~/Scripts/angular-spinner.js"));
         }
     }
 }
