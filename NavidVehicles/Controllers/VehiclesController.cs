@@ -8,8 +8,9 @@ using System.Web.Http.Description;
 namespace NavidVehicles.Controllers
 {
     /// <summary>
-    /// teh controller for Vehicle
+    /// Controller for Vehicle
     /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     [RoutePrefix("api/vehicles")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class VehiclesController : ApiController
@@ -18,7 +19,7 @@ namespace NavidVehicles.Controllers
         IDAOFactory _DAOFactory;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="VehiclesController"/> class.
         /// </summary>
         public VehiclesController() : this(new DAOFactory())
         {
@@ -26,17 +27,18 @@ namespace NavidVehicles.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="VehiclesController"/> class.
         /// </summary>
-        /// <param name="DAOFactory"></param>
+        /// <param name="DAOFactory">The DAO factory.</param>
         public VehiclesController(IDAOFactory DAOFactory)
         {
             _DAOFactory = DAOFactory;
         }
 
         /// <summary>
-        /// GET all vehicles.
+        /// Get all vehicles.
         /// </summary>
+        /// <returns></returns>
         // GET: api/vehicles/vehicles
         [Route("vehicles")]
         [ResponseType(typeof(List<Vehicle>))]
@@ -57,6 +59,7 @@ namespace NavidVehicles.Controllers
         /// Get vehicle by ID.
         /// </summary>
         /// <param name="id">The ID of the data.</param>
+        /// <returns></returns>
         // GET: api/vehicles/vehicles/id
         [Route("vehicles/{id:int}")]
         [ResponseType(typeof(Vehicle))]
@@ -74,9 +77,10 @@ namespace NavidVehicles.Controllers
         }
 
         /// <summary>
-        /// Looks up some vehicles by ID.
+        /// Create new vehicle.
         /// </summary>
         /// <param name="createVehicleDTO">The vehicle.</param>
+        /// <returns></returns>
         // POST: api/vehicles/vehicles
         [Route("vehicles")]
         [ResponseType(typeof(Vehicle))]
@@ -101,9 +105,10 @@ namespace NavidVehicles.Controllers
         }
 
         /// <summary>
-        /// Update vehicles
+        /// Update vehicle
         /// </summary>
         /// <param name="vehicle">The vehicle.</param>
+        /// <returns></returns>
         // PUT: api/vehicles/vehicles
         [Route("vehicles")]
         [ResponseType(typeof(bool))]
@@ -133,9 +138,10 @@ namespace NavidVehicles.Controllers
         }
 
         /// <summary>
-        /// Delete vehicles
+        /// Delete vehicle by ID
         /// </summary>
         /// <param name="id">The ID of the data.</param>
+        /// <returns></returns>
         // Delete: api/vehicles/vehicles
         [Route("vehicles/{id:int}")]
         [ResponseType(typeof(Vehicle))]
